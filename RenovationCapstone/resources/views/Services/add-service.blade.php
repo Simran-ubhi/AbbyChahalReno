@@ -13,7 +13,7 @@
                 </div>
                 <div>
                     <label for="cost_sqft">Cost/sqft.</label>
-                    <input type="text" name="cost_sqft">
+                    <input type="text" step="any" name="cost_sqft">
                 </div>
                 <div>
                     <label for="description">Description:</label>

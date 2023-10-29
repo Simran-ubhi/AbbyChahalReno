@@ -3,7 +3,8 @@
 <main>
     <h1>New Content</h1>
     <div>
-        <form action="{{route('addContent')}}" enctype="multipart/form-data">
+        <form action="{{route('addContent')}}" enctype="multipart/form-data" method="post">
+            @csrf
             <div>
                 <label for="service_id">Select Service: </label>
                 <select name="service_id" id="service_id">
@@ -27,12 +28,12 @@
 
             <div>
                 <label for="image3">Image3:</label>
-                <input type="file" name="image3" required>
+                <input type="file" name="image3">
             </div>
 
             <div>
                 <label for="image4">Image4:</label>
-                <input type="file" name="image4" required>
+                <input type="file" name="image4">
             </div>
 
             <div>

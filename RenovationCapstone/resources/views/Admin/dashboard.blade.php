@@ -22,16 +22,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($users as $user)
                         <tr>
-                            <td>John Doe</td>
-                            <td>johndoe@example.com</td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
                             <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
                         </tr>
-                        <tr>
-                            <td>Jane Smith</td>
-                            <td>janesmith@example.com</td>
-                            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -50,16 +47,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($services as $service)
                         <tr>
-                            <td>Web Design</td>
-                            <td>$500</td>
-                            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                            <td>{{$service->name}}</td>
+                            <td>{{$service->cost_sqft}}</td>
+                            <td><a href="{{route('updateForm-services', $service->id)}}">Edit</a> | <a href="{{route('deletePage', $service->id)}}">Delete</a></td>
                         </tr>
-                        <tr>
-                            <td>Graphic Design</td>
-                            <td>$400</td>
-                            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -72,22 +66,23 @@
                 <table class="content-table">
                     <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Cost</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($content as $data)
+
                         <tr>
-                            <td>Blog Post 1</td>
-                            <td>2023-01-15</td>
-                            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                            <td>{{$data->name}}</td>
+                            <td><img src="{{$data->image1}}" alt="{{$data->description}}"></td>
+                            <td>{{$data->cost}}</td>
+                            <td><a href="{{route('updateForm-content', $data->id)}}">Edit</a> | <a href="{{route('content-deletepage', $data->id)}}">Delete</a></td>
                         </tr>
-                        <tr>
-                            <td>Blog Post 2</td>
-                            <td>2023-02-20</td>
-                            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
-                        </tr>
+
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -101,22 +96,21 @@
                 <table class="estimates-table">
                     <thead>
                         <tr>
-                            <th>Estimate ID</th>
                             <th>Client Name</th>
-                            <th>Action</th>
+                            <th>Service</th>
+                            <th>Address</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($estimates as $estimate)
                         <tr>
-                            <td>001</td>
-                            <td>Client A</td>
-                            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                            <td>{{$estimate->client_name}}</td>
+                            <td>{{$estimate->name}}</td>
+                            <td>{{$estimate->address}}</td>
+                            <td><a href="#">View</a> | <a href="{{route('deleteEstimatePage',$estimate->id)}}">Delete</a></td>
                         </tr>
-                        <tr>
-                            <td>002</td>
-                            <td>Client B</td>
-                            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -19,7 +19,7 @@
 <body>
     <header>
 
-        <a href="/"><img src="LOGO2.jpg" width="250px" alt="Abby Chahal Renovation"></a>
+        <a href="/"><img src="LOGO2.jpg" class="header-logo" width="300px" alt="Abby Chahal Renovation"></a>
         {{-- <div style="width: 100px"> --}}
 
                 <div class="menu-toggle">
@@ -35,7 +35,6 @@
                     <hr>
                     @if(session('LoggedAdmin') || session('LoggedEmployee') ||session('LoggedUser'))
                     <div class="user-options">
-                            {{-- <i class="user-options--btn"><img class="icon" src="user-icon.png" width="30px" alt="option"></i> --}}
                             <ul class="user-option--menu">
                                 @if(session('LoggedAdmin'))
                                     <li><a href="{{route('dashboard')}}">Dashboard</a></li>

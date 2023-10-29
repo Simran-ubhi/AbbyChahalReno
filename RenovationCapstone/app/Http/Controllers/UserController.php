@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\users;
 use App\Models\contents;
 use App\Models\estimates;
+use App\Models\services;
 
 
 
@@ -154,12 +155,17 @@ class UserController extends Controller
 
      public function dashboard(){
         $user = users::find(session('LoggedAdmin'));
-        $data = contents::all();
+        $content = contents::select('contents.*', 'services.name')
+                            ->join('services', 'contents.service_id', '=', 'services.id')
+                            ->get();
         $users = users::all();
-        $estimates = estimates::all();
+        $estimates = estimates::select('estimates.*', 'services.name')
+        ->join('services', 'estimates.service_id', '=', 'services.id')
+        ->get();
+        $services = services::all();
 
         if(session('LoggedAdmin')){
-            return view('Admin.dashboard',['data'=>$data, 'user'=>$user, 'users'=>$users, 'estimates'=>$estimates]);
+            return view('Admin.dashboard',['content'=>$content, 'services'=>$services, 'user'=>$user, 'users'=>$users, 'estimates'=>$estimates]);
         }else{
             return view('errors.403');
         }

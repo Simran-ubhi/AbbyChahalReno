@@ -19,7 +19,7 @@
                     <label for="description">Description:</label>
                     <textarea name="description" id="description" cols="30" rows="10">value="{{$data->description}}"</textarea>
                 </div>
-                <input type="submit" value="Add">
+                <input type="submit" value="Save">
             </form>
 
         </div>

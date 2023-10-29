@@ -4,7 +4,7 @@
 <main>
     <h1>Estimator</h1>
     <div>
-        <form action="{{route('sendEstimate')}}">
+        <form name="new_estimate_form" action="{{route('sendEstimate')}}" method="post">
         @csrf
         <div>
             <label for="client_name">Client Name:</label>
@@ -22,24 +22,24 @@
                 <option value="">--choose--</option>
 
                 @foreach ($services as $service)
-                    <option value="{{$service->id}}">{{$service->name}}</option>
+                    <option cost="{{$service->cost_sqft}}" value="{{$service->id}}">{{$service->name}}</option>
                 @endforeach
             </select>
         </div>
 
         <div>
             <label for="length">Length:</label>
-            <input type="text" name="length">
+            <input type="text" step="any" name="length" value="1">
         </div>
 
         <div>
             <label for="width">Width:</label>
-            <input type="text" name="length">
+            <input type="text" step="any" name="Width" value="1">
         </div>
 
         <div>
             <label for="material_cost">Material Cost(optional):</label>
-            <input type="text" name="material_cost">
+            <input type="text" step="any" name="material_cost" value="0">
         </div>
 
         <div>
