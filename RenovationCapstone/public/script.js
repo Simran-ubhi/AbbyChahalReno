@@ -1,9 +1,11 @@
 window.onload=()=>{
 
 
+    let menu_toggle = document.querySelector('.menu-toggle');
+    let menu = document.querySelector('.menu');
 
-    document.querySelector('.menu-toggle').addEventListener('click', function () {
-        document.querySelector('.menu').classList.toggle('active');
+    menu_toggle.addEventListener('click', function () {
+        menu.classList.toggle('active');
         this.classList.toggle('active');
     });
 

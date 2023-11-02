@@ -4,8 +4,8 @@
         <div class="delete-container">
             <h1>Are You Sure You want to Delete?</h1>
             <div class="delete-btns">
-                <a href="">Delete</a>
-                <a href="">Cancel</a>
+                <a href="{{route('content-delete',$data->id)}}">Delete</a>
+                <a href="{{route('dashboard')}}">Cancel</a>
             </div>
         </div>
     </main>

@@ -29,7 +29,7 @@ class ServicesController extends Controller
     public function addService(Request $request){
         if(session('LoggedAdmin')){
             $new = services::create($request->all());
-            return redirect('/dashboard')->with("Success","Service Has Been Added!");
+            return redirect()->route('dashboard')->with("Success","Service Has Been Added!");
         }
     }
 
@@ -72,7 +72,7 @@ class ServicesController extends Controller
     public function delete($id){
         $data = services::find($id);
         $data->delete();
-        return view('Admin.dashboard')->with("Success","Service Has Been Delete.");
+        return redirect()->route('dashboard')->with("Success","Service Has Been Delete.");
     }
 
 
@@ -127,6 +127,6 @@ class ServicesController extends Controller
      */
     public function deleteEstimate($id){
         $data = estimates::find($id);
-        return view('Admin.dashboard')->with('Success','Estimate Delete Successfully');
-    }
+        $data->delete();
+        return redirect()->route('dashboard')->with('Success','The estimate has been deleted');    }
 }

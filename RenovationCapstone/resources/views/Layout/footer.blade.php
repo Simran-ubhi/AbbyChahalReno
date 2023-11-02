@@ -1,11 +1,11 @@
 <footer>
 
     <div class="footer--logo">
-        <img src="lg3W.png" width="200px" loading="lazy" alt="Abby Chahal Renovations Logo">
+        <img src="/lg3W.png" width="200px" loading="lazy" alt="Abby Chahal Renovations Logo">
         <div class="footer--social-media">
-            <a href=""><img width="44px" src="facebook.png" alt="facebook"></a>
-            <a href=""><img width="44px" src="instagram.png" alt="instagram"></a>
-            <a href=""><img width="44px" src="tik-tok.png" alt="tik tok"></a>
+            <a href=""><img width="44px" src="/facebook.png" alt="facebook"></a>
+            <a href=""><img width="44px" src="/instagram.png" alt="instagram"></a>
+            <a href=""><img width="44px" src="/tik-tok.png" alt="tik tok"></a>
         </div>
     </div>
 

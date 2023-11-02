@@ -1,7 +1,7 @@
 html, body{
     margin: 0px;
     padding: 0px;
-    font-family: 'Comfortaa', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 header{
@@ -323,7 +323,21 @@ a{
 
 
 
+.success{
+    background-color: rgb(0, 161, 0);
+    color: white;
+    text-align: center;
+    border-radius: 9px;
+    padding: 30px;
+}
 
+.fail{
+    background-color: rgb(221, 7, 7);
+    color: white;
+    text-align: center;
+    border-radius: 9px;
+    padding: 30px;
+}
 
 
 /* -----------portfolio page------------ */
@@ -342,6 +356,7 @@ a{
 
 .card {
     position: relative;
+    background-repeat:no-repeat;
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -350,7 +365,6 @@ a{
     flex-direction: column;
     transition: transform 0.2s;
     width: 350px;
-    height: 400px;
 }
 
 .card-content{
@@ -481,9 +495,125 @@ table td, table th {
 
 
 
+table img{
+    width: 100px;
+    height: auto;
+}
 
 
 
+/* ---------- Content Details Page ------------*/
+
+
+.details-page-container h1{
+    font-size: 48px;
+}
+
+.details-page-container{
+    width: 95%;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-content: center;
+    place-items: center;
+}
+
+
+.content-images{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.content-images-1, .content-images-2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.content-images img{
+    border-radius: 16px;
+    width: 350px;
+    height: auto;
+    margin: 20px;
+}
+
+.content-images-1 img:nth-child(2){
+    margin-top: 50px;
+}
+.content-images-2 img:nth-child(2){
+    margin-top: 50px;
+}
+
+
+.content-content{
+    display: grid;
+    grid-template-columns: 1fr;
+    place-content: center;
+    place-items: center;
+}
+
+.content-content p{
+    text-align: center;
+    font-size: 26px;
+    font-weight: 400;
+    width: 100%;
+}
+
+.content-content strong{
+    font-size: 30px;
+    font-weight: 400;
+    width: 100%;
+
+}
+
+
+
+
+
+
+/* --- Delete Page --- */
+
+.delete-container{
+    display: block;
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+.delete-btns{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    width: 100%;
+    margin: 30px auto;
+}
+
+.delete-btns a:nth-child(1){
+    background-color: #ff0a2f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 16px;
+}
+
+.delete-btns a:nth-child(2){
+    background-color:#007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 16px;
+}
+
+.delete-btn{
+    color: red;
+}
+
+
+
+
+
+
+/* -------- Footer ----------*/
 
 footer{
     padding-top: 50px;

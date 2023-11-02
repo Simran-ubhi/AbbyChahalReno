@@ -43,7 +43,7 @@
                                 <li><a href="{{route('dashboard')}}">Dashboard</a></li>
                             @endif
                             @if (session('LoggedUser'))
-                                <li><a href="">Profile</a></li>
+                                <li><a href="{{route('profile')}}">Profile</a></li>
                             @endif
                             @if(session('LoggedAdmin') || session('LoggedEmployee'))
                                 <li><a href="{{route('estimator')}}">Estimator</a></li>

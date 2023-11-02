@@ -2,6 +2,21 @@
 
 <main>
     <h1>New Content</h1>
+
+    @if (session()->has('Success'))
+        <p class="success">{{session('Success')}}</p>
+    @endif
+
+    @if ($errors->any())
+    <div class="fail">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <div>
         <form action="{{route('addContent')}}" enctype="multipart/form-data" method="post">
             @csrf
@@ -9,10 +24,11 @@
                 <label for="service_id">Select Service: </label>
                 <select name="service_id" id="service_id">
                     <option value="">--choose--</option>
-                    {{-- @for () --}}
-                    <option value="1">Tiles</option>
-                    <option value="2">Washroom</option>
-                    {{-- @endfor --}}
+                    @foreach ($data as $item)
+
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+
+                    @endforeach ()
                 </select>
             </div>
 

@@ -3,6 +3,23 @@
 
 <main>
     <h1>Estimator</h1>
+
+
+    @if (session()->has('Success'))
+        <p class="success">{{session('Success')}}</p>
+    @endif
+
+    @if ($errors->any())
+    <div class="fail">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+
     <div>
         <form name="new_estimate_form" action="{{route('sendEstimate')}}" method="post">
         @csrf

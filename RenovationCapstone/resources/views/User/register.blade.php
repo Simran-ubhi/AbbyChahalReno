@@ -31,6 +31,7 @@
             <label for="phone">Phone no.:</label>
             <input type="number" name="phone">
         </div>
+        <input type="hidden" value="User" name="role">
         <div>
             <label for="address">Address:</label>
             <textarea name="address"  cols="30" rows="10" required></textarea>

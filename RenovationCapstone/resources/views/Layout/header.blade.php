@@ -9,17 +9,16 @@
     {{-- font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js"></script>
     <title>Abby Chahal Rennovations</title>
 </head>
 <body>
     <header>
 
-        <a href="/"><img src="LOGO2.jpg" class="header-logo" width="300px" alt="Abby Chahal Renovation"></a>
+        <a href="/"><img src="/LOGO2.jpg" class="header-logo" width="300px" alt="Abby Chahal Renovation"></a>
         {{-- <div style="width: 100px"> --}}
 
                 <div class="menu-toggle">
@@ -39,7 +38,7 @@
                                 @if(session('LoggedAdmin'))
                                     <li><a href="{{route('dashboard')}}">Dashboard</a></li>
                                 @endif
-                                    <li><a href="">Profile</a></li>
+                                    <li><a href="{{route('profile')}}">Profile</a></li>
                                 @if(session('LoggedAdmin') || session('LoggedEmployee'))
                                     <li><a href="{{route('estimator')}}">Estimator</a></li>
                                 @endif

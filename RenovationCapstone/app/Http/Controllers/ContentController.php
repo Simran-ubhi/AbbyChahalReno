@@ -20,7 +20,8 @@ class ContentController extends Controller
      */
     public function contentForm(){
         if(session('LoggedAdmin')){
-            return view('Content.add-form');
+            $data = services::all();
+            return view('Content.add-form',['data'=>$data]);
         }
     }
 
@@ -64,13 +65,10 @@ class ContentController extends Controller
         // if ($request->hasFile('image3')) {$imagePath3 = $request->file('image3')->store('images', 'public');}
         // if ($request->hasFile('image4')) {$imagePath4 = $request->file('image4')->store('images', 'public');}
 
-            // Store the image path in the database
-            $new = contents::create($requestData);
-            // $new->image1 = $imagePath1;
-            // $new->image2 = $imagePath2;
-            $new->save();
+        $new = contents::create($requestData);
+        $new->save();
 
-            return redirect()->back()->with('success', 'Data Updated Successfully');
+        return redirect()->back()->with('Success', 'Data Added Successfully');
 
     }
 
@@ -81,8 +79,12 @@ class ContentController extends Controller
      */
     public function updateForm($id){
         if(session('LoggedAdmin')){
-            $content = contents::find($id);
-            return view('Content.update-form',['content'=>$content]);
+            $data = contents::select('contents.*', 'services.name')
+                            ->join('services', 'contents.service_id', '=', 'services.id')
+                            ->get();
+
+            $services = services::all();
+            return view('Content.update-form',['services'=>$services,'data'=>$data]);
         }
     }
 
@@ -105,46 +107,39 @@ class ContentController extends Controller
                 $img1 = str_replace(' ', '',$request->file('image1')->getClientOriginalName());
                 $path = $request->file('image1')->storeAs('public', $img1);
                 $requestData['image1'] = "/storage/".$img1;
+                $data->image1 = $requestData['image1'];
             }
 
             if($request->image2){
                 $img2 = str_replace(' ', '',$request->file('image2')->getClientOriginalName());
                 $path = $request->file('image2')->storeAs('public', $img2);
                 $requestData['image2'] = "/storage/".$img2;
+                $data->image2 = $requestData['image2'];
             }
 
             if($request->image3){
                 $img3 = str_replace(' ', '',$request->file('image3')->getClientOriginalName());
                 $path = $request->file('image3')->storeAs('public', $img3);
                 $requestData['image3'] = "/storage/".$img3;
+                $data->image3 = $requestData['image3'];
             }
 
             if($request->image4){
                 $img4 = str_replace(' ', '',$request->file('image4')->getClientOriginalName());
                 $path = $request->file('image4')->storeAs('public', $img4);
                 $requestData['image4'] = "/storage/".$img4;
+                $data->image4 = $requestData['image4'];
             }
 
-            // if ($request->hasFile('image1')) {$imagePath1 = $request->file('image1')->store('images', 'public');}
-            // if ($request->hasFile('image2')) {$imagePath2 = $request->file('image2')->store('images', 'public');}
-            // if ($request->hasFile('image3')) {$imagePath3 = $request->file('image3')->store('images', 'public');}
-            // if ($request->hasFile('image4')) {$imagePath4 = $request->file('image4')->store('images', 'public');}
-
-                // Store the image path in the database
-                $new = contents::create($requestData);
-                // $new->image1 = $imagePath1;
-                // $new->image2 = $imagePath2;
-                $new->save();
 
 
+                $data->service_id = $requestData['service_id'];
+                $data->description = $requestData['description'];
+                $data->cost = $requestData['cost'];
 
-                /**
-                 *
-                 * ADD CODE TO UPDATE EVERY SINGLE FIELD
-                 *
-                 */
+                $data->save();
 
-                return redirect()->back()->with('success', 'Data Updated Successfully');
+                return redirect()->route('dashboard')->with('Success', 'Data Updated Successfully');
 
         }
     }
@@ -169,7 +164,7 @@ class ContentController extends Controller
         if(session('LoggedAdmin')){
             $data = contents::find($id);
             $data->delete();
-            return view('Admin.dashboard');
+            return redirect()->route('dashboard')->with('Success','The item has been deleted');
         }
     }
 
@@ -179,14 +174,14 @@ class ContentController extends Controller
      */
 
     public function favorite($id){
-        $data = favorite::where('content_id',$id)
+        $data = favorites::where('content_id',$id)
                 ->where('user_id',session('LoggedUser'))->first();
 
         if($data){
             $data->delete();
             return redirect()->back()->with("Success","Removed From Favorites");
         } else{
-            $new = favorite::new([
+            $new = favorites::create([
                 "content_id" => $id,
                 "user_id" => session('LoggedUser'),
             ]);
@@ -206,6 +201,17 @@ class ContentController extends Controller
         return view('portfolio', ['content'=>$content]);
     }
 
+    /**
+     * Content Detials Page
+     */
 
+    public function contentDetails($id){
+        // $data = contents::find($id);
+        $data = contents::select('contents.*', 'services.name')
+                            ->join('services', 'contents.service_id', '=', 'services.id')
+                            ->where('contents.id','=',$id)->get();
+        // return $data[0]->name;
+        return view('Content.content-details', ['data' => $data]);
+    }
 }
 

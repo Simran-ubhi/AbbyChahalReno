@@ -1,11 +1,15 @@
 @include('Layout.header')
+<h1 style="margin: 30px; font-weigth:600; font-size:48px">Our Gallery</h1>
 <main class="portolio-container">
+
+
+
     @foreach ($content as $tile)
 
-        <div class="card" style="background-image: url(https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAzL3JtNTk3ZGVzaWduLWMtY2hvbmctMDAxLmpwZw.jpg); background-size:cover; background-repeat:no-repeat; width:250px; height:400px;">
+        <div class="card" style="background-image: url({{$tile->image1}}); background-size: 300px auto; height:400px">
             <div class="card-content">
                 <p><Strong>Budget:</Strong>${{$tile->cost}}</p>
-                <a href="" class="card-btn">View Details</a>
+                <a href="{{route('contentDetails',$tile->id)}}" class="card-btn">View Details</a>
             </div>
         </div>
 

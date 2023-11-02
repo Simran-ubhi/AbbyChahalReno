@@ -7,6 +7,12 @@
         <h1>{{$user->name}}'s Dashboard</h1>
         <hr class="hr">
 
+
+
+    @if (session()->has('Success'))
+        <p class="success">{{session('Success')}}</p>
+    @endif
+
         <div class="tables">
             <div>
                 <div class="table-header">
@@ -26,7 +32,7 @@
                         <tr>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
-                            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                            <td><a href="{{route('editUser', $user->id)}}">Edit</a> | <a href="{{route('delete-user',$user->id)}}" class="delete-btn">Delete</a></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -51,7 +57,7 @@
                         <tr>
                             <td>{{$service->name}}</td>
                             <td>{{$service->cost_sqft}}</td>
-                            <td><a href="{{route('updateForm-services', $service->id)}}">Edit</a> | <a href="{{route('deletePage', $service->id)}}">Delete</a></td>
+                            <td><a href="{{route('updateForm-services', $service->id)}}">Edit</a> | <a href="{{route('delete-service', $service->id)}}" class="delete-btn">Delete</a></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -79,7 +85,7 @@
                             <td>{{$data->name}}</td>
                             <td><img src="{{$data->image1}}" alt="{{$data->description}}"></td>
                             <td>{{$data->cost}}</td>
-                            <td><a href="{{route('updateForm-content', $data->id)}}">Edit</a> | <a href="{{route('content-deletepage', $data->id)}}">Delete</a></td>
+                            <td><a href="{{route('updateForm-content', $data->id)}}">Edit</a> | <a href="{{route('content-deletepage', $data->id)}}" class="delete-btn">Delete</a></td>
                         </tr>
 
                         @endforeach
@@ -108,7 +114,7 @@
                             <td>{{$estimate->client_name}}</td>
                             <td>{{$estimate->name}}</td>
                             <td>{{$estimate->address}}</td>
-                            <td><a href="#">View</a> | <a href="{{route('deleteEstimatePage',$estimate->id)}}">Delete</a></td>
+                            <td><a href="#">View</a> | <a href="{{route('deleteEstimatePage',$estimate->id)}}" class="delete-btn">Delete</a></td>
                         </tr>
                         @endforeach
                     </tbody>

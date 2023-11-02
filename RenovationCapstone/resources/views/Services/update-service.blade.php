@@ -5,7 +5,7 @@
     <div>
         <h1>Update {{$data->name}}</h1>
         <div>
-            <form action="{{route('update-services')}}" method="post">
+            <form action="{{route('update-services', $data->id)}}" method="post">
                 @csrf
                 <div>
                     <label for="name">Name:</label>

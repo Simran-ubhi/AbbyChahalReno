@@ -22,14 +22,15 @@ Route::any('/logout',[UserController::class,'logout'])->name('logout');
 Route::get('/dashboard',[UserController::class,'dashboard'])->name('dashboard');
 
 
+Route::get('/edit-user/{id}',[UserController::class,'editUser'])->name('editUser');
+Route::any('/editing-user/{id}',[UserController::class,'editingUser'])->name('editingUser');
 
 
+Route::get('/delete-user/{id}',[UserController::class,'deletePage'])->name('delete-user');
+Route::any('/deleting-user/{id}',[UserController::Class,'delete'])->name('deleting-user');
 
 
-
-
-
-
+Route::get('/profile',[UserController::class,'profile'])->name('profile');
 
 
 
@@ -52,7 +53,7 @@ Route::any('/updating-content/{id}',[ContentController::class,'updateContent'])-
 Route::get('/delete-content/{id}',[ContentController::class,'deletePage'])->name('content-deletepage');
 Route::any('/deleting-content/{id}',[ContentController::class,'deleteContent'])->name('content-delete');
 
-
+Route::get('/content-details/{id}',[ContentController::class,'contentDetails'])->name('contentDetails');
 
 Route::any('/favorite/{id}',[ContentController::class,'favorite'])->name('favorite');
 
@@ -66,8 +67,8 @@ Route::any('/adding-service',[ServicesController::class,'addService'])->name('ad
 Route::get('/update-service/{id}',[ServicesController::class,'updateForm'])->name('updateForm-services');
 Route::any('/updating-service/{id}',[ServicesController::class,'update'])->name('update-services');
 
-Route::get('/delete-service/{id}',[ServicesController::class,'deletePage'])->name('deletePage');
-Route::any('/deleting-service/{id}',[ServicesController::class,'delete'])->name('delete-service');
+Route::get('/delete-service/{id}',[ServicesController::class,'deletePage'])->name('delete-service');
+Route::any('/deleting-service/{id}',[ServicesController::class,'delete'])->name('deleting-service');
 
 
 

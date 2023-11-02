@@ -9,6 +9,7 @@ use App\Models\users;
 use App\Models\contents;
 use App\Models\estimates;
 use App\Models\services;
+use App\Models\favorites;
 
 
 
@@ -124,7 +125,7 @@ class UserController extends Controller
      * Update Form
      */
     public function updateForm($id){
-        $data = user::find($id);
+        $data = users::find($id);
         return view('');
     }
 
@@ -137,15 +138,15 @@ class UserController extends Controller
      * Delete User
      */
     public function deletePage($id){
-        $data = user::find($id);
+        $data = users::find($id);
         return view('User.delete-user',["data"=>$data]);
     }
 
 
     public function delete($id){
-        $data = user::find($id);
+        $data = users::find($id);
         $data->delete();
-        return view('Admin.dashboard');
+        return redirect()->route('dashboard');
     }
 
 
@@ -171,6 +172,37 @@ class UserController extends Controller
         }
      }
 
+
+     public function editUser($id){
+        $user = users::find($id);
+        return view('Admin.edit-user', ['data'=>$user]);
+     }
+
+     public function editingUser(Request $request, $id){
+        $user = users::find($id);
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->role = $request->role;
+        $user->address = $request->address;
+        $user->save();
+        return redirect()->back()->with('Success','User Updated Successfully');
+     }
+
+
+
+
+     public function profile(){
+        $user = users::find(session('LoggedUser'));
+        $favourites = favorites::select('favorites.*', 'users.*')
+                            ->join('contents', 'favorites.content_id', '=', 'contents.id')
+                            ->join('users', 'favorites.user_id','=','users.id')
+                            ->get();
+
+
+        // return $favourites;
+        return view('User.profile',["user"=>$user, "favorites"=>$favourites ]);
+     }
 
 
 }
