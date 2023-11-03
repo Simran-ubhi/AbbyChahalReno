@@ -206,12 +206,17 @@ class ContentController extends Controller
      */
 
     public function contentDetails($id){
-        // $data = contents::find($id);
         $data = contents::select('contents.*', 'services.name')
                             ->join('services', 'contents.service_id', '=', 'services.id')
                             ->where('contents.id','=',$id)->get();
-        // return $data[0]->name;
-        return view('Content.content-details', ['data' => $data]);
+        if(session('LoggedUser')){
+            $fav = favorites::where('user_id',session('LoggedUser'))
+                            ->where('content_id',$id)
+                            ->get();
+            return view('Content.content-details', ['data' => $data, 'fav'=>$fav]);
+        } else {
+            return view('Content.content-details', ['data' => $data]);
+        }
     }
 }
 

@@ -26,6 +26,10 @@ Route::get('/edit-user/{id}',[UserController::class,'editUser'])->name('editUser
 Route::any('/editing-user/{id}',[UserController::class,'editingUser'])->name('editingUser');
 
 
+Route::get('/user-update',[UserController::class,'user_Update'])->name('user-Update');
+Route::any('/user-updating',[UserController::class,'user_Updating'])->name('user-Updating');
+
+
 Route::get('/delete-user/{id}',[UserController::class,'deletePage'])->name('delete-user');
 Route::any('/deleting-user/{id}',[UserController::Class,'delete'])->name('deleting-user');
 

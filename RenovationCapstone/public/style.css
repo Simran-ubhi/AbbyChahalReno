@@ -612,6 +612,27 @@ table img{
 
 
 
+/* -------profile------- */
+
+.profile *{
+    text-align: center;
+}
+
+.profile hr{
+    width: 60%;
+    opacity: 0.4;
+    margin: 20px auto;
+}
+
+.profile .edit-btn{
+    padding: 10px;
+    color: #b1001a;
+    /* border: 1px solid #b1001a; */
+    border-radius: 10px;
+    background-color: #00000000;
+    margin-bottom: -50px;
+}
+
 
 /* -------- Footer ----------*/
 

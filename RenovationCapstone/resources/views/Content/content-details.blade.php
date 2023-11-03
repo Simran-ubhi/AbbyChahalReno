@@ -35,8 +35,13 @@
             <p>{{$data[0]->description}}</p>
             <hr>
             <p class="cost"><strong>Estimated Cost - ${{$data[0]->cost}}</strong></p>
-
-            <a href="{{route('favorite',$data[0]->id )}}" class="card-btn" style="margin: 20px auto;">Add to Favourites</a>
+        @if(session('LoggedUser'))
+            @if(count($fav)==0)
+                <a href="{{route('favorite',$data[0]->id )}}" class="card-btn" style="margin: 20px auto;">Add to Favourites</a>
+            @else
+                <a href="{{route('favorite',$data[0]->id )}}" class="card-btn" style="margin: 20px auto;">Remove From to Favourites</a>
+            @endif
+        @endif
         </div>
 
     </div>

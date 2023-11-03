@@ -104,15 +104,15 @@ class UserController extends Controller
     public function logout(){
         if(session('LoggedAdmin')){
             session()->pull('LoggedAdmin');
-            return view('welcome');
+            return view('user.login');
 
         }else if(session('LoggedUser')){
             session()->pull('LoggedUser');
-            return route('index');
+            return view('user.login');
 
         }else if(session('LoggedEmployee')){
             session()->pull('LoggedEmployee');
-            return route('index');
+            return view('user.login');
 
         }else{
             return view('errors.404');
@@ -173,10 +173,18 @@ class UserController extends Controller
      }
 
 
+
+     /**
+      * Admin - User Update
+      */
      public function editUser($id){
         $user = users::find($id);
         return view('Admin.edit-user', ['data'=>$user]);
      }
+
+     /**
+      * Admin - user update savvbe
+      */
 
      public function editingUser(Request $request, $id){
         $user = users::find($id);
@@ -191,16 +199,40 @@ class UserController extends Controller
 
 
 
+     /**
+      * User Self Update
+      */
+     public function user_update(){
+        $user = users::find(session('LoggedUser'));
+        return view('User.update-user',['data'=>$user]);
+     }
 
+
+
+     /**
+      * User Self update save
+      */
+
+     public function user_updating(Request $request){
+        $user = users::find(session('LoggedUser'));
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->save();
+        return redirect()->back()->with('Success','Changes have been saved!');
+     }
+
+
+
+     /**
+      * User Profile
+      */
      public function profile(){
         $user = users::find(session('LoggedUser'));
-        $favourites = favorites::select('favorites.*', 'users.*')
+        $favourites = favorites::select('favorites.*', "contents.*")
                             ->join('contents', 'favorites.content_id', '=', 'contents.id')
                             ->join('users', 'favorites.user_id','=','users.id')
                             ->get();
-
-
-        // return $favourites;
         return view('User.profile',["user"=>$user, "favorites"=>$favourites ]);
      }
 
