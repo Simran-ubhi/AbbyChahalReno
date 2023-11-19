@@ -237,4 +237,15 @@ class UserController extends Controller
      }
 
 
+
+    //  public function contact_mail($request){
+    //     Mail::send('contact-mail', $data, function ($request) {
+    //         $message->from('john@johndoe.com', 'John Doe');
+    //         $message->to('john@johndoe.com', 'John Doe');
+    //         $message->subject('New Query Website');
+    //         $message->attach('pathToFile');
+    //     });
+    //  }
+
+
 }

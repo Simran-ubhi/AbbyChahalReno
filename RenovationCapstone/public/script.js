@@ -20,17 +20,17 @@ window.onload=()=>{
 
         length.addEventListener('keyup', ()=>{
             var final = Width.value * length.value + Number(material_cost.value);
-            estimated_cost.value = "$"+final;
+            estimated_cost.value =final;
         });
 
         Width.addEventListener('keyup', ()=>{
             var final = Width.value * length.value + Number(material_cost.value);
-            estimated_cost.value = "$"+final;
+            estimated_cost.value =final;
         });
 
         material_cost.addEventListener('keyup', ()=>{
             var final = Width.value * length.value + Number(material_cost.value);
-            estimated_cost.value = "$"+final;
+            estimated_cost.value =final;
         });
 
     }

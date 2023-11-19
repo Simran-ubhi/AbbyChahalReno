@@ -33,15 +33,15 @@
         <div class="contact-info">
             <div class="contact-box">
                 <span class="contact-label">Address:</span>
-                <p class="address">123 Main Street<br>City, State ZIP</p>
+                <p class="address">123 Main Street<br>Abbotsford, British columbia</p>
             </div>
             <div class="contact-box">
                 <span class="contact-label">Email:</span>
-                <p class="email">example@example.com</p>
+                <p class="email">abbychahal@gmail.com</p>
             </div>
             <div class="contact-box">
                 <span class="contact-label">Phone:</span>
-                <p class="phone">(123) 456-7890</p>
+                <p class="phone">+1(647)300-1111</p>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@
     <div>
         <h1>Update {{$data[0]->name}}</h1>
         <div>
-            <form action="{{route('updateContent', $data[0]->id)}}" method="post">
+            <form action="{{route('updateContent', $data[0]->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
                     <label for="service_id">Select Service: </label>

@@ -34,8 +34,9 @@ header{
     cursor: pointer;
     padding: 15px;
     display: block;
-    top: 10px;
-    left: 10px;
+    /* position: absolute; */
+    /* top: px; */
+    right: 0%;
     z-index: 999;
     width: 100px;
 }
@@ -365,6 +366,8 @@ a{
     flex-direction: column;
     transition: transform 0.2s;
     width: 350px;
+    box-shadow: 0px 2px 4px 1px #00000059;
+    margin: 20px;
 }
 
 .card-content{
@@ -534,9 +537,10 @@ table img{
 
 .content-images img{
     border-radius: 16px;
-    width: 350px;
+    width: 280px;
     height: auto;
     margin: 20px;
+    box-shadow: 0px 2px 4px 1px #00000059;
 }
 
 .content-images-1 img:nth-child(2){
@@ -552,22 +556,38 @@ table img{
     grid-template-columns: 1fr;
     place-content: center;
     place-items: center;
+    background-color: #dadada40;
+    width:100%;
+    border-radius: 8px;
+
 }
 
-.content-content p{
-    text-align: center;
-    font-size: 26px;
-    font-weight: 400;
-    width: 100%;
+.content-content h2{
+    font-size: 28px;
+    text-align: left;
 }
+
+.content-desc{
+    font-size: 20px;
+    font-weight: 400;
+    margin: 20px;
+}
+
+
 
 .content-content strong{
-    font-size: 30px;
+    font-size: 22px;
     font-weight: 400;
-    width: 100%;
 
 }
 
+
+.cost{
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color:#333;
+    color: white;
+}
 
 
 
